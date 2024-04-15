@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="complexyolov3_ros" type="ros_node_complexyolo.py" name="complexyolo_node" output="screen">
+    </node>
+</launch>

@@ -1,0 +1,9 @@
+<package>
+  <name>complexyolov3_ros</name>
+  <version>0.0.1</version>
+  <description>ROS Wrapper for ComplexYOLOv3</description>
+  <maintainer email="sachin.sharma@wmich.edu">Sachin Sharma</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
+

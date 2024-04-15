@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/neo/ros_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/neo/ros_ws/src/cam_lidar_calibration/include/**",
+        "/home/neo/ros_ws/src/FAST_LIO-main/include/**",
+        "/home/neo/ros_ws/src/kia_localization/include/**",
+        "/home/neo/ros_ws/src/lateral_controllers/include/**",
+        "/home/neo/ros_ws/src/ouster_example/ouster_ros/include/**",
+        "/home/neo/ros_ws/src/pylon-ros-camera/pylon_camera/include/**",
+        "/home/neo/ros_ws/src/robot_localization/include/**",
+        "/home/neo/ros_ws/src/roscco/include/**",
+        "/home/neo/ros_ws/src/ros_canopen/socketcan_bridge/include/**",
+        "/home/neo/ros_ws/src/ros_canopen/socketcan_interface/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
