@@ -1,6 +1,6 @@
 # ROS Wrapper for ComplexYOLOv3 Implementation
 
-YOLOv3 implementation was forked from [this repository](https://github.com/ghimiredhikura/Complex-YOLOv3).
+ComplexYOLOv3 implementation was forked from [this repository](https://github.com/ghimiredhikura/Complex-YOLOv3).
 
 ## Package Installation
 ```bash
