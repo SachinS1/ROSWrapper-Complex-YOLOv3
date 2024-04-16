@@ -95,4 +95,6 @@ if __name__=="__main__":
     node = LiDARNode(point_cloud_topic, classes_file, config_file, model_checkpoint, bev_detection_out_topic, confidence_threshold, nms_threshold)
     cv2.destroyAllWindows()
 
+    
+
 
