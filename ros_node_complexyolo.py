@@ -13,32 +13,34 @@ import argparse
 import time
 import torch
 
-import utils.utils as utils
-from models import *
+import complexyolov3.utils.utils as utils
+from complexyolov3.models import *
 import torch.utils.data as torch_data
 
-import utils.kitti_utils as kitti_utils
-import utils.kitti_aug_utils as aug_utils
-import utils.kitti_bev_utils as bev_utils
-from utils.kitti_yolo_dataset import KittiYOLODataset
-import utils.config as cnf
-import utils.mayavi_viewer as mview
+import complexyolov3.utils.kitti_utils as kitti_utils
+import complexyolov3.utils.kitti_aug_utils as aug_utils
+import complexyolov3.utils.kitti_bev_utils as bev_utils
+from complexyolov3.utils.kitti_yolo_dataset import KittiYOLODataset
+import complexyolov3.utils.config as cnf
+import complexyolov3.utils.mayavi_viewer as mview
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
         
 
 class LiDARNode:
-    def __init__(self):
+    def __init__(self, point_cloud_topic, classes_file, config_file, model_checkpoint, bev_detection_out_topic, confidence_threshold, nms_threshold):
         
-        self.pcl_subscriber = rospy.Subscriber("/os1_cloud_node/points", PointCloud2, self.pcl_callback )
-        self.classes = utils.load_classes("data/classes.names")
+        self.pcl_subscriber = rospy.Subscriber(point_cloud_topic, PointCloud2, self.pcl_callback )
+        self.classes = utils.load_classes(classes_file)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = Darknet("config/complex_yolov3.cfg").to(self.device)
-        self.model.load_state_dict(torch.load("checkpoints/yolov3_ckpt_epoch-24_MAP-0.51.pth"))
+        self.model = Darknet(config_file).to(self.device)
+        self.model.load_state_dict(torch.load(model_checkpoint))
         self.model.eval()
         self.Tensor = torch.cuda.FloatTensor if torch.cuda.is_available() else torch.FloatTensor
         self.bridge = CvBridge()
-        self.img_publisher = rospy.Publisher("os1/bev_detections", Image, queue_size=10)
+        self.img_publisher = rospy.Publisher(bev_detection_out_topic, Image, queue_size=10)
+        self.confidence_threshold = confidence_threshold
+        self.nms_threshold = nms_threshold
         rospy.spin()
     
 
@@ -82,10 +84,15 @@ class LiDARNode:
 
 
 if __name__=="__main__":
-    rospy.init_node("PCL_Object_Detector")
-
-    LiDARNode()
-
+    rospy.init_node("complexyolo_detector_node")
+    point_cloud_topic = rospy.get_param("~point_cloud_topic")
+    classes_file = rospy.get_param("~classes_file")
+    config_file = rospy.get_param("~config_file")
+    model_checkpoint = rospy.get_param("~model_checkpoint")
+    bev_detection_out_topic = rospy.get_param("~bev_detection_out_topic")
+    confidence_threshold = rospy.get_param("~confidence_threshold")
+    nms_threshold = rospy.get_param("~nms_threshold")
+    node = LiDARNode(point_cloud_topic, classes_file, config_file, model_checkpoint, bev_detection_out_topic, confidence_threshold, nms_threshold)
     cv2.destroyAllWindows()
 
 

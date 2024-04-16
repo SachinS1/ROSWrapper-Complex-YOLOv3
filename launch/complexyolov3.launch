@@ -1,4 +1,11 @@
 <launch>
     <node pkg="complexyolov3_ros" type="ros_node_complexyolo.py" name="complexyolo_node" output="screen">
+    <param name="point_cloud_topic" type="string" value="/os1_cloud_node/points"/> <!-- change to appropriate LiDAR topic   -->
+    <param name="classes_file" type="string" value="complexyolov3/data/classes.names"/>
+    <param name="config_file" type="string" value="complexyolov3/config/complex_yolov3.cfg"/>
+    <param name="model_checkpoint" type="string" value="complexyolov3/checkpoints/yolov3_ckpt_epoch-24_MAP-0.51.pth"/>
+    <param name="bev_detection_out_topic" type="string" value="/bev_detections_out"/>
+    <param name="nms_threshold" type="double" value="0.5"/>
+    <param name="confidence_threshold" type="double" value="0.5"/>
     </node>
 </launch>
