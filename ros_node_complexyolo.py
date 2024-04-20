@@ -41,6 +41,7 @@ class LiDARNode:
         self.img_publisher = rospy.Publisher(bev_detection_out_topic, Image, queue_size=10)
         self.confidence_threshold = confidence_threshold
         self.nms_threshold = nms_threshold
+        self.first_scan = True
         rospy.spin()
     
 
@@ -72,6 +73,9 @@ class LiDARNode:
 
             # Rescale boxes to original image
             detections = utils.rescale_boxes(detections, 608, self.RGB_Map.shape[:2])
+            if self.first_scan:
+                rospy.loginfo("Started BEV detection Node!")
+                self.first_scan = False
             for x, y, w, l, im, re, conf, cls_conf, cls_pred in detections:
                 yaw = np.arctan2(im, re)
                 # Draw rotated box
