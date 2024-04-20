@@ -1,8 +1,8 @@
 import numpy as np
 import mayavi.mlab as mlab
 import cv2
-import utils.kitti_utils as kitti_utils
-import utils.config as cnf
+import complexyolov3.utils.kitti_utils as kitti_utils
+import complexyolov3.utils.config as cnf
 
 def draw_lidar_simple(pc, color=None):
     ''' Draw lidar points. simplest set up. '''

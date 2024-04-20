@@ -2,8 +2,8 @@ import numpy as np
 import math
 import torch
 import cv2
-import utils.config as cnf
-import utils.kitti_utils as kitti_utils
+import complexyolov3.utils.config as cnf
+import complexyolov3.utils.kitti_utils as kitti_utils
 
 def removePoints(PointCloud, BoundaryCond):
     # Boundary condition

@@ -4,7 +4,7 @@ import glob
 import numpy as np
 import cv2
 import torch.utils.data as torch_data
-import utils.kitti_utils as kitti_utils
+import complexyolov3.utils.kitti_utils as kitti_utils
 
 class KittiDataset(torch_data.Dataset):
 

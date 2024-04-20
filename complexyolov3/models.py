@@ -7,7 +7,7 @@ from torch.autograd import Variable
 import numpy as np
 import math
 
-from utils.utils import build_targets, to_cpu, parse_model_config
+from complexyolov3.utils.utils import build_targets, to_cpu, parse_model_config
 
 def create_modules(module_defs):
     """

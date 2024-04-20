@@ -2,10 +2,10 @@
 import os
 import numpy as np
 import random
-from utils.kitti_dataset import KittiDataset
-import utils.kitti_aug_utils as augUtils
-import utils.kitti_bev_utils as bev_utils
-import utils.config as cnf
+from complexyolov3.utils.kitti_dataset import KittiDataset
+import complexyolov3.utils.kitti_aug_utils as augUtils
+import complexyolov3.utils.kitti_bev_utils as bev_utils
+import complexyolov3.utils.config as cnf
 
 import torch
 import torch.nn.functional as F

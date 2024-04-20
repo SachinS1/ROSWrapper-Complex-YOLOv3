@@ -5,7 +5,7 @@
 import numpy as np
 import math
 import cv2
-import utils.config as cnf
+import complexyolov3.utils.config as cnf
 
 def angle_in_limit(angle):
 	# To limit the angle in -pi/2 - pi/2

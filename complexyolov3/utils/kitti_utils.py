@@ -4,7 +4,7 @@ from __future__ import print_function
 import numpy as np
 import cv2
 import os
-import utils.config as cnf
+import complexyolov3.utils.config as cnf
 
 class Object3d(object):
     ''' 3d object label '''
